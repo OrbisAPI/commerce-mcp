@@ -1,0 +1,16 @@
+{
+  "name": "@orbisapi/commerce-mcp",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "500+ commerce & retail APIs for AI agents — Amazon, Walmart, product search, price tracking. Pay per call with USDC via x402.",
+  "scripts": {
+    "start": "node example.mjs"
+  },
+  "dependencies": {
+    "viem": "^2.0.0",
+    "x402-fetch": "^0.1.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
