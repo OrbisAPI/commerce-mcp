@@ -109,3 +109,57 @@ See `example.mjs` for a full working script.
 ---
 
 Built by [Orbis](https://orbisapi.com) — the API marketplace for AI agents.
+
+## Connect
+
+### Claude Desktop
+
+Add to your `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "orbis-commerce": { "url": "https://orbisapi.com/api/mcp/commerce" }
+  }
+}
+```
+
+### OpenAI Agents SDK
+
+**Python:**
+```python
+from agents.mcp import MCPServerStreamableHttp
+from agents import Agent, Runner
+
+mcp = MCPServerStreamableHttp(url="https://orbisapi.com/api/mcp/commerce")
+
+agent = Agent(
+    name="Orbis Commerce Agent",
+    model="gpt-4o",
+    mcp_servers=[mcp]
+)
+
+result = await Runner.run(agent, "Browse available commerce APIs")
+print(result.final_output)
+```
+
+**TypeScript:**
+```typescript
+import { Agent, run } from "@openai/agents";
+import { MCPServerStreamableHttp } from "@openai/agents/mcp";
+
+const mcp = new MCPServerStreamableHttp({
+  url: "https://orbisapi.com/api/mcp/commerce",
+});
+
+const agent = new Agent({
+  name: "Orbis Commerce Agent",
+  model: "gpt-4o",
+  mcpServers: [mcp],
+});
+
+const result = await run(agent, "Browse available commerce APIs");
+console.log(result.finalOutput);
+```
+
+> Calls are billed per-use in USDC via [x402](https://x402.org) on Base mainnet. No subscription, no API key required.
